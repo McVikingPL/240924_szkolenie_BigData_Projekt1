@@ -15,3 +15,18 @@ def laduj_dane(ds_digits, nb_rows, nb_cols, fig_hgt, fig_wdt):
 
     return ds_digits
 
+
+def trenuj_model(ds_digits, tst_size, tst_shfl):
+
+    n_samples = len(ds_digits.images)
+    # n_samples
+    print(n_samples)
+    # preprocessing danych
+    data = ds_digits.images.reshape(n_samples, -1)
+    # data.shape
+    print(data.shape)
+
+    # X_train, X_test, y_train, y_test = train_test_split(data, ds_digits.target, test_size=tst_size, shuffle=tst_shfl)
+    #
+    # return X_train, X_test, y_train, y_test
+    return train_test_split(data, ds_digits.target, test_size=tst_size, shuffle=tst_shfl)

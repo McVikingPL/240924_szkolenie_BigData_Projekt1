@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from sklearn import datasets,metrics,svm
 from sklearn.model_selection import train_test_split
 from funkcje.funkcje_svm import laduj_dane
+from funkcje.funkcje_svm import trenuj_model
 
 # digits = datasets.load_digits()
 #
@@ -15,18 +16,20 @@ from funkcje.funkcje_svm import laduj_dane
 
 digits = laduj_dane(datasets.load_digits(),1,4,10,3)
 
-n_samples = len(digits.images)
-# n_samples
-print(n_samples)
+# n_samples = len(digits.images)
+# # n_samples
+# print(n_samples)
 
 clf = svm.SVC(gamma=0.001)
 
-#preprocessing danych
-data = digits.images.reshape(n_samples,-1)
-# data.shape
-print(data.shape)
+# #preprocessing danych
+# data = digits.images.reshape(n_samples,-1)
+# # data.shape
+# print(data.shape)
+#
+# X_train,X_test,y_train,y_test = train_test_split(data,digits.target,test_size=0.5,shuffle=False)
 
-X_train,X_test,y_train,y_test = train_test_split(data,digits.target,test_size=0.5,shuffle=False)
+X_train, X_test, y_train, y_test = trenuj_model(digits, 0.5, False)
 
 clf.fit(X_train,y_train)
 
