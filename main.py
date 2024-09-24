@@ -44,3 +44,4 @@ print(f"raport klasyfikacji dla klasyfikatora {clf} ->\n{metrics.classification_
 disp = metrics.ConfusionMatrixDisplay.from_predictions(y_test,predicted)
 disp.figure_.suptitle(("Macierz pomyłek"))
 
+plt.show()
