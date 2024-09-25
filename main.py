@@ -61,7 +61,7 @@ disp.figure_.suptitle(("Macierz pomyłek"))
 plt.show()
 
 # raport klasyfikacji dla gamma=0.01
-print(f"raport klasyfikacji dla klasyfikatora {clf} ->\n{metrics.classification_report(y_test,predicted2)}\n")
+print(f"raport klasyfikacji dla klasyfikatora {clf2} ->\n{metrics.classification_report(y_test,predicted2)}\n")
 
 # macierz pomyłek dla gamma=0.01
 disp = metrics.ConfusionMatrixDisplay.from_predictions(y_test,predicted2)
