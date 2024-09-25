@@ -20,7 +20,11 @@ digits = laduj_dane(datasets.load_digits(),1,4,10,3)
 # # n_samples
 # print(n_samples)
 
+# Support Vector Classification
+# gamma można ustawiać inne wartości; ten parametr decyduje o tym jak bardzo będziemy trenować te modele
+# większa wartość np. 0.01 daje już gorsze wyniki, przestrzeń rozmywa się na krawędzi macierzy
 clf = svm.SVC(gamma=0.001)
+clf2 = svm.SVC(gamma=0.01)
 
 # #preprocessing danych
 # data = digits.images.reshape(n_samples,-1)
@@ -32,9 +36,11 @@ clf = svm.SVC(gamma=0.001)
 X_train, X_test, y_train, y_test = trenuj_model(digits, 0.5, False)
 
 clf.fit(X_train,y_train)
+clf2.fit(X_train,y_train)
 
 # predykcja na wytrenowanym modelu
 predicted = clf.predict(X_test)
+predicted2 = clf2.predict(X_test)
 
 _, axes = plt.subplots(nrows=1,ncols=4,figsize=(10,3))
 for ax,image,pred in zip(axes,X_test,predicted):
@@ -45,9 +51,20 @@ for ax,image,pred in zip(axes,X_test,predicted):
 
 plt.show()
 
+# raport klasyfikacji dla gamma=0.001
 print(f"raport klasyfikacji dla klasyfikatora {clf} ->\n{metrics.classification_report(y_test,predicted)}\n")
 
+# macierz pomyłek dla gamma=0.001
 disp = metrics.ConfusionMatrixDisplay.from_predictions(y_test,predicted)
 disp.figure_.suptitle(("Macierz pomyłek"))
+
+plt.show()
+
+# raport klasyfikacji dla gamma=0.01
+print(f"raport klasyfikacji dla klasyfikatora {clf} ->\n{metrics.classification_report(y_test,predicted2)}\n")
+
+# macierz pomyłek dla gamma=0.01
+disp = metrics.ConfusionMatrixDisplay.from_predictions(y_test,predicted2)
+disp.figure_.suptitle(("Macierz pomyłek 2"))
 
 plt.show()
