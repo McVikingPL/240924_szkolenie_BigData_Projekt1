@@ -42,6 +42,9 @@ clf2.fit(X_train,y_train)
 predicted = clf.predict(X_test)
 predicted2 = clf2.predict(X_test)
 
+# Poniższe warto wstawić do sparametryzowanej funkcji, bo używamy 2x to samo
+# zapis _, powoduje, że dana zmienna jest ignorowana podczas rzutowania (jest nam niepotrzebna, nie będzie używana)
+# poniżej funkcja plt.subplots() zwraca zbiór składający się z 2 wartości i pierwszą ignoruję, biorę tylko drugą
 _, axes = plt.subplots(nrows=1,ncols=4,figsize=(10,3))
 for ax,image,pred in zip(axes,X_test,predicted):
     ax.set_axis_off()
