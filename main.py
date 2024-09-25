@@ -34,6 +34,10 @@ clf2 = svm.SVC(gamma=0.01)
 # X_train,X_test,y_train,y_test = train_test_split(data,digits.target,test_size=0.5,shuffle=False)
 
 X_train, X_test, y_train, y_test = trenuj_model(digits, 0.5, False)
+# wartość 0.5 wynika z doświadczenia - przy mniejszej ilości danych lepiej dać 0.5;
+# dla większej ilości danych (np. >100 000) lepiej dać 0.2 - będzie optymalny
+# każdy model można przetrenowć - tzn. im dłużej trenujesz tym gorszy wynik
+# dlatego te wartości trzeba dobierać doświadczalnie albo są mechanizmy dobierające optymalne wartości
 
 clf.fit(X_train,y_train)
 clf2.fit(X_train,y_train)
